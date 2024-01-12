@@ -1,0 +1,9 @@
+post_install() {
+	install_message="
+	==============================
+	==============================\n\n
+	Add the following to your environment variables:\n\tATHENA_HOME=/opt/athena\n\n
+	==============================
+	==============================\n"
+	echo -e "$install_message"
+}
