@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A modern, practical language for proof engineering & natural deduction."
 arch=('x86_64')
 url="https://github.com/AthenaFoundation/athena.git"
-license=('Apache')
+license=('Apache-2.0')
 depends=('bash' 'sh' 'gmp' 'glibc')
 optdepends=('spass: needed for prove command in athena'
 			'minisat-git: needed for sat commands in athena')
@@ -36,9 +36,8 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-VCS}"
-	extracted_version=$(echo "$pkgver" | sed -n 's/^\(v[0-9]\+\.[0-9]\+\.[0-9]\+\).*/\1/p')
-	mkdir -p $pkgdir/opt
-	cp -r "build/athena-linux-$extracted_version" "$pkgdir/opt/athena"
-	mkdir -p $pkgdir/usr/bin
-	ln -s /opt/athena/athena $pkgdir/usr/bin/
+	mkdir -p "$pkgdir"/opt
+	cp -r "build/athena-linux-$pkgver" "$pkgdir"/opt/athena
+	mkdir -p "$pkgdir"/usr/bin
+	ln -s /opt/athena/athena "$pkgdir"/usr/bin/
 }
