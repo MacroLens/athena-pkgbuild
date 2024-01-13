@@ -2,7 +2,7 @@
 pkgname=athena-git
 pkgver=v1.4.3
 pkgrel=1
-pkgdesc="Athena is a modern, practical language for proof engineering & natural deduction."
+pkgdesc="A modern, practical language for proof engineering & natural deduction."
 arch=('x86_64')
 url="https://github.com/AthenaFoundation/athena.git"
 license=('Apache')
