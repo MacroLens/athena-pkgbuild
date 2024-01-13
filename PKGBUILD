@@ -1,6 +1,6 @@
 # Maintainer: Dylan Le <self at dylanle dot dev>
 pkgname=athena-git
-pkgver=v1.4.3.r0.b23d255
+pkgver=v1.4.3
 pkgrel=1
 pkgdesc="Athena is a modern, practical language for proof engineering & natural deduction."
 arch=('x86_64')
@@ -12,13 +12,14 @@ optdepends=('spass: needed for prove command in athena'
 makedepends=('git' 'smlnj' 'mlton')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
-source=("$pkgname::git+$url#tag=v1.4.3")
+_tag=b23d255e1796859986b87bc9419d3bb347ebfdf7
+source=("$pkgname::git+$url#tag=$_tag")
 md5sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+     cd "$pkgname"
+     git describe --tags
 }
 
 build() {
